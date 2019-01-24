@@ -25,8 +25,9 @@ func ProofOfIntegrityHash(data []byte) string {
 }
 
 // VerifyPOIHash ...
-func VerifyPOIHash(b []byte, check string) bool {
-	return ProofOfIntegrityHash(b) == check
+func VerifyPOIHash(b []byte, check string) (string, bool) {
+	hash := ProofOfIntegrityHash(b)
+	return hash, hash == check
 }
 
 // StrToHex return hex encoded string
