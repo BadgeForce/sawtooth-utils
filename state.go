@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/rberg2/sawtooth-go-sdk/signing"
+
 	"github.com/rberg2/sawtooth-go-sdk/processor"
 )
 
@@ -28,6 +30,23 @@ func ProofOfIntegrityHash(data []byte) string {
 func VerifyPOIHash(b []byte, check string) (string, bool) {
 	hash := ProofOfIntegrityHash(b)
 	return hash, hash == check
+}
+
+// VerifySig ...
+func VerifySig(signature, publicKey string, message []byte, hexEnc bool) bool {
+	ctx := signing.NewSecp256k1Context()
+	pub := signing.NewSecp256k1PublicKey([]byte(publicKey))
+	sig := []byte(signature)
+	msg := encodeMsg(message, hexEnc)
+	return ctx.Verify(sig, msg, pub)
+}
+
+func encodeMsg(message []byte, hexEnc bool) []byte {
+	if !hexEnc {
+		return message
+	}
+	encoded := BytesToHex(message)
+	return []byte(encoded)
 }
 
 // StrToHex return hex encoded string
