@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hyperledger/sawtooth-sdk-go/signing"
 	"github.com/rberg2/sawtooth-go-sdk/processor"
+	"github.com/rberg2/sawtooth-go-sdk/signing"
 )
 
 // State ...
