@@ -6,8 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/rberg2/sawtooth-go-sdk/signing"
-
+	"github.com/hyperledger/sawtooth-sdk-go/signing"
 	"github.com/rberg2/sawtooth-go-sdk/processor"
 )
 
