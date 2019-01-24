@@ -24,12 +24,22 @@ func ProofOfIntegrityHash(data []byte) string {
 	return fmt.Sprintf("%x", md5.Sum(data))
 }
 
-// ToHex return hex encoded string
-func ToHex(str string) string {
+// StrToHex return hex encoded string
+func StrToHex(str string) string {
 	return strings.ToLower(hex.EncodeToString([]byte(str)))
 }
 
-// FromHex return hex decoded string
-func FromHex(str string) ([]byte, error) {
+// BytesToHex return hex encoded string
+func BytesToHex(b []byte) string {
+	return strings.ToLower(hex.EncodeToString(b))
+}
+
+// HexToStr return hex decoded bytes
+func HexToStr(str string) ([]byte, error) {
 	return hex.DecodeString(str)
+}
+
+// HexToBytes return hex decoded bytes
+func HexToBytes(b []byte) ([]byte, error) {
+	return hex.DecodeString(string(b))
 }
