@@ -24,6 +24,11 @@ func ProofOfIntegrityHash(data []byte) string {
 	return fmt.Sprintf("%x", md5.Sum(data))
 }
 
+// VerifyPOIHash ...
+func VerifyPOIHash(b []byte, check string) bool {
+	return ProofOfIntegrityHash(b) == check
+}
+
 // StrToHex return hex encoded string
 func StrToHex(str string) string {
 	return strings.ToLower(hex.EncodeToString([]byte(str)))
