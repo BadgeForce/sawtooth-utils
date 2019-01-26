@@ -20,21 +20,21 @@ func NewStateInstance(context *processor.Context) *State {
 	return &State{context}
 }
 
-// ProofOfIntegrityHash ...
+// ProofOfIntegrityHash create a proof of intergrity hash
 func ProofOfIntegrityHash(data []byte) string {
 	return fmt.Sprintf("%x", md5.Sum(data))
 }
 
-// VerifyPOIHash ...
+// VerifyPOIHash verify proof of integrity hash provided for some data is valid
 func VerifyPOIHash(b []byte, check string) (string, bool) {
 	hash := ProofOfIntegrityHash(b)
 	return hash, hash == check
 }
 
-// VerifySig ...
-func VerifySig(signature, publicKey string, message []byte, hexEnc bool) bool {
+// VerifySig verify a signed message
+func VerifySig(signature string, publicKey, message []byte, hexEnc bool) bool {
 	ctx := signing.NewSecp256k1Context()
-	pub := signing.NewSecp256k1PublicKey([]byte(publicKey))
+	pub := signing.NewSecp256k1PublicKey(publicKey)
 	sig := []byte(signature)
 	msg := encodeMsg(message, hexEnc)
 	return ctx.Verify(sig, msg, pub)
@@ -58,12 +58,12 @@ func BytesToHex(b []byte) string {
 	return strings.ToLower(hex.EncodeToString(b))
 }
 
-// HexToStr return hex decoded bytes
-func HexToStr(str string) ([]byte, error) {
+// DecodeHexStr return hex decoded bytes
+func DecodeHexStr(str string) ([]byte, error) {
 	return hex.DecodeString(str)
 }
 
-// HexToBytes return hex decoded bytes
-func HexToBytes(b []byte) ([]byte, error) {
+// DecodeHexBytes return hex decoded bytes
+func DecodeHexBytes(b []byte) ([]byte, error) {
 	return hex.DecodeString(string(b))
 }
