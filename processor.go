@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"syscall"
 
 	"github.com/rberg2/sawtooth-go-sdk/processor"
@@ -32,7 +31,6 @@ func (t *TransactionHandler) FamilyVersions() []string {
 
 // Namespaces ...
 func (t *TransactionHandler) Namespaces() []string {
-	fmt.Println(t.NamespaceMngr.NameSpaces)
 	return t.NamespaceMngr.NameSpaces
 }
 
