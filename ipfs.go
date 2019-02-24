@@ -59,10 +59,11 @@ func (ipfs *IPFSClient) NewFile(name string, data []byte) (*File, []byte) {
 }
 
 // AddFile ...
-func (ipfs *IPFSClient) AddFile(filename, filetype string, data []byte) (string, error) {
+func (ipfs *IPFSClient) AddFile(filename, filetype string, data []byte) (string, string, error) {
 	fileName := ipfs.GetFileName(filename, filetype)
 	_, fileBytes := ipfs.NewFile(fileName, data)
-	return ipfs.Shell.Add(bytes.NewReader(fileBytes))
+	hash, err := ipfs.Shell.Add(bytes.NewReader(fileBytes))
+	return fileName, hash, err
 }
 
 // NewIPFSHTTPClient ...
