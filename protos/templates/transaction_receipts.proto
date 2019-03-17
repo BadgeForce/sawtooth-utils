@@ -1,9 +1,9 @@
 syntax = "proto3";
-option go_package = "badgeforce_pb";
-package badgeforce_pb;
+option go_package = "github.com/BadgeForce/sawtooth-utils/protos/templates_pb";
+package template_pb;
 
-import "protos/templates/template.proto";
-import "protos/templates/payload.proto";
+import "templates/template.proto";
+import "templates/payload.proto";
 
 message Receipt {
     int64 date = 1;

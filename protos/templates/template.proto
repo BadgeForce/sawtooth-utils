@@ -1,6 +1,6 @@
 syntax = "proto3";
-option go_package = "badgeforce_pb";
-package badgeforce_pb;
+option go_package = "github.com/BadgeForce/sawtooth-utils/protos/templates_pb";
+package template_pb;
 
 import "google/protobuf/struct.proto";
 
